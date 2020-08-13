@@ -17,12 +17,12 @@ public class BlackJackDemo {
 		
 		System.out.println("Welcome to our demo of a classic BlackJack ");
 		
-		//playingDeck will be the deck the dealer holds
+		//This will be the deck the dealer holds
 		Deck playingDeck = new Deck();
 		playingDeck.createFullDeck();
 		playingDeck.shuffle();
 		
-		//playerCards will be the cards the player has in their hand
+		//This will be the cards the player has in their hand
 		Deck playerCards = new Deck();
 		
 		double playerMoney = 100.0;
@@ -44,7 +44,7 @@ while(playerMoney>0){
 		break;
 	}
 	
-	System.out.println("Dealing...");
+	System.out.println("Dealing your cards..");
 	//Player gets two cards
 	playerCards.draw(playingDeck);
 	playerCards.draw(playingDeck);
