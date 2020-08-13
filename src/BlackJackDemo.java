@@ -24,24 +24,23 @@ public class BlackJackDemo {
 		
 		//playerCards will be the cards the player has in their hand
 		Deck playerCards = new Deck();
-		//playerMoney holds players cash - we will be lazy and use doubles instead of bigdecimals
+		
 		double playerMoney = 100.0;
-		//dealerCards will be the cards the dealer has in their hand
+		
 		Deck dealerCards = new Deck();
 		
-		//Scanner for user input
+		
 		Scanner userInput = new Scanner(System.in);
 		
-		//Play the game while the player has money
-		//Game loop
+		
 while(playerMoney>0){
-	//Take Bet
+	
 	System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
 	double playerBet = userInput.nextDouble();
 	boolean endRound = false;
 	if(playerBet > playerMoney){
-		//Break if they bet too much
-		System.out.println("You cannot bet more than you have.");
+		
+		System.out.println("You cannot bet more money than you currently have .");
 		break;
 	}
 	
@@ -54,7 +53,7 @@ while(playerMoney>0){
 	dealerCards.draw(playingDeck);
 	dealerCards.draw(playingDeck);
 			
-			//While loop for drawing new cards
+			//create a loop for drawing new cards
 			while(true)
 			{
 				//Display player cards
@@ -66,23 +65,23 @@ while(playerMoney>0){
 				//Display dealer cards
 				System.out.println("Dealer Hand: " + dealerCards.getCard(0).toString());
 				
-				//What do they want to do
+				
 				System.out.println("Would you like to (1)Hit or (2)Stand");
 				int response = userInput.nextInt();	
-				//They hit
+				//if They  chose to hit
 				if(response == 1){
 					playerCards.draw(playingDeck);
 					System.out.println("You draw a:" + playerCards.getCard(playerCards.deckSize()-1).toString());
-					//Bust if they go over 21
+					//Game is Bust if the total value goes over 21
 					if(playerCards.cardsValue() > 21){
-						System.out.println("Bust. Currently valued at: " + playerCards.cardsValue());
+						System.out.println("Bust. Your total value of cards is : " + playerCards.cardsValue());
 						playerMoney -= playerBet;
 						endRound = true;
 						break;
 					}
 				}
 				
-				//Stand
+				//If they chose to Stand
 				if(response == 2){
 					break;
 				}
@@ -110,7 +109,7 @@ while(playerMoney>0){
 				playerMoney += playerBet;
 				endRound = true;
 			}
-			//Determine if push
+			//Determine if push(which means both player and dealer has equal total)
 			if((dealerCards.cardsValue() == playerCards.cardsValue()) && endRound == false){
 				System.out.println("Push.");
 				endRound = true;
@@ -127,7 +126,7 @@ while(playerMoney>0){
 				playerMoney -= playerBet;
 			}
 
-			//End of hand - put cards back in deck
+			
 			playerCards.moveAllToDeck(playingDeck);
 			dealerCards.moveAllToDeck(playingDeck);
 			System.out.println("End of Hand.");
@@ -136,7 +135,7 @@ while(playerMoney>0){
 		//Game is over
 		System.out.println("Game over! Try Again! ");
 		
-		//Close Scanner
+		
 		userInput.close();
 		
 	}
