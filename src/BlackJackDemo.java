@@ -25,7 +25,7 @@ public class BlackJackDemo {
 		//This will be the cards the player has in their hand
 		Deck playerCards = new Deck();
 		
-		double playerMoney = 100.0;
+		double playerMoney = 100.0; // Inital Money given to the Player
 		
 		Deck dealerCards = new Deck();
 		
@@ -33,7 +33,7 @@ public class BlackJackDemo {
 		Scanner userInput = new Scanner(System.in);
 		
 		
-while(playerMoney>0){
+while(playerMoney>0){ // Money needs to be more than 0 to play
 	
 	System.out.println("You have $" + playerMoney + ", how much would you like to bet?");
 	double playerBet = userInput.nextDouble();
@@ -96,14 +96,14 @@ while(playerMoney>0){
 				playerMoney -= playerBet;
 				endRound = true;
 			}
-			//Dealer hits at 16 stands at 17
+			
 			while((dealerCards.cardsValue() < 17) && endRound == false){
 				dealerCards.draw(playingDeck);
 				System.out.println("Dealer draws: " + dealerCards.getCard(dealerCards.deckSize()-1).toString());
 			}
 			//Display value of dealer
 			System.out.println("Dealers hand value: " + dealerCards.cardsValue());
-			//Determine if dealer busted
+			//Determine if dealer has busted
 			if((dealerCards.cardsValue()>21)&& endRound == false){
 				System.out.println("Dealer Busts. You win!");
 				playerMoney += playerBet;

@@ -39,7 +39,7 @@ public class Deck {
 	
 
 public void shuffle(){
-	//Create a new arraylist to hold the shuffled cards temporarily
+	
 	ArrayList<Card> tmpDeck = new ArrayList<Card>();
 	
 	Random random = new Random();
